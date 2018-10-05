@@ -1,8 +1,3 @@
-// function sayHallo(name) {
-//     console.log('hey ' + name);
-// }
-// sayHallo('Dee');
-
 /*
 Modules build for Node
 - Operating system.
@@ -10,4 +5,8 @@ Modules build for Node
 - events
 - http
 */
-console.log(module);
+
+const express = require('express');
+const app = express();
+
+ 
