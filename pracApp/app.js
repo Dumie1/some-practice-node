@@ -8,6 +8,9 @@ Modules build for Node
 /*steps in creating this project
 
 */
+
+
+const Joi = require('joi');
 const express = require('express');
 const app = express();
 
@@ -30,10 +33,13 @@ app.get('/api/courses', (req, res) => {
 
 // creating a new course object and adding it to the array...
 app.post('/api/courses', (req, res) => {
-    if (!req.body.name || req.body.name < 3){
-        res.status(400).send(`name required`);
-    return;
-};
+
+    const { error } = validateCourse(req.body);
+    if (error) {
+        res.status(400).send(result.error.details[0].message);
+        return;
+    };
+
     const course = {
         id: courses.length + 1,
         name: req.body.name
@@ -42,20 +48,64 @@ app.post('/api/courses', (req, res) => {
     res.send(course);
 });
 
-
-
-
-
-
-
-
-app.get('/api/courses/:id', (req, res) => {
+// updating a course
+app.put('/api/courses/:id', (req, res) => {
+   //look up the new course else 404 error
     const course = courses.find(c => c.id === parseInt(req.params.id));
+    if (!course) res.status(404).send(`Course not found`) // return 404
 
-    if(!course) res.status(404).send(`not found`) // return 404
-
+    const {error} = validateCourse(req.body);
+    if (error) {
+        res.status(400).send(result.error.details[0].message);
+        return;
+    };
+    //update a course
+    course.name = req.body.name;
     res.send(course);
+
 });
+
+//to delete
+app.delete('/api/courses/:id', (req, res) => {
+    //checking course n returning 404 error
+    const course = courses.find(c => c.id === parseInt(req.params.id));
+    if (!course) res.status(404).send(`Course not found`) // return 404
+
+    //to delete
+    const index = courses.indexOf(course);
+    courses.splice(index, 1);
+    //return course
+    res.send(course);
+
+});
+
+
+
+
+
+
+
+
+function validateCourse(course) {
+    const schema = {
+        name: Joi.string().min(3).required()
+    };
+
+    return Joi.validate(course, schema);
+
+};
+
+
+
+
+
+// app.get('/api/courses/:id', (req, res) => {
+//     const course = courses.find(c => c.id === parseInt(req.params.id));
+
+//     if(!course) res.status(404).send(`not found`) // return 404
+
+//     res.send(course);
+// });
 
 
 // app.get('/api/courses/:id', (req, res) => {
