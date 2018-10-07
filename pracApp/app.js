@@ -27,9 +27,11 @@ app.get('/', (req, res) => {
     res.send('My new App~~!!')
 }); 
 
+
 app.get('/api/courses', (req, res) => {
     res.send(courses);
 });
+
 
 // creating a new course object and adding it to the array...
 app.post('/api/courses', (req, res) => {
@@ -48,6 +50,7 @@ app.post('/api/courses', (req, res) => {
     res.send(course);
 });
 
+
 // updating a course
 app.put('/api/courses/:id', (req, res) => {
    //look up the new course else 404 error
@@ -65,7 +68,8 @@ app.put('/api/courses/:id', (req, res) => {
 
 });
 
-//to delete
+
+//to delete a course
 app.delete('/api/courses/:id', (req, res) => {
     //checking course n returning 404 error
     const course = courses.find(c => c.id === parseInt(req.params.id));
@@ -80,12 +84,6 @@ app.delete('/api/courses/:id', (req, res) => {
 });
 
 
-
-
-
-
-
-
 function validateCourse(course) {
     const schema = {
         name: Joi.string().min(3).required()
@@ -94,10 +92,6 @@ function validateCourse(course) {
     return Joi.validate(course, schema);
 
 };
-
-
-
-
 
 // app.get('/api/courses/:id', (req, res) => {
 //     const course = courses.find(c => c.id === parseInt(req.params.id));
@@ -112,18 +106,7 @@ function validateCourse(course) {
 //     res.send(req.query);
 // });
 
-
-
-
-
-
-
-
-
-
-
 //Environmental variable
-
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`Listening on port ${port}...`));
