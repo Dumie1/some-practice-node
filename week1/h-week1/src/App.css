@@ -8,8 +8,8 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #3f4a61; 
+  min-height: 10vh; /*this was 100vh initially*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,4 +29,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/*Added this line of code below*/
+.help{
+  background: red;
+  margin:0px;
+  padding: 0px;
+  
+  
 }
