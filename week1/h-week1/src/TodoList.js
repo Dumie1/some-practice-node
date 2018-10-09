@@ -1,15 +1,17 @@
+// array of objects
+//use let so that we can be able to edit or delet a todo later
 let todoItems = [
     {
         description: "Get out of bed",
-        deadLine: "Wed Sep 13 2018",
+        deadLine: "Wed Nov 13 2018",
     },
     {
         description: "Brush teeth",
-        deadLine: "Thu Sep 14 2018",
+        deadLine: "Thu Nov 14 2018",
     },
     {
         description: "Eat breakfast",
-        deadLine: "Fri Sep 15 2018",
+        deadLine: "Fri Nov 15 2018",
     }
 ];
 

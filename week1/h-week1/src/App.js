@@ -20,12 +20,13 @@ class App extends Component {
           >
             {/* LReactearn 
           </a>  */} 
-          <h3>Todo List</h3>
+          <h3>Dumie's Todo List</h3>
         </header>
       
         
-        <Description/>
-        
+        <Description />
+        <hr/>
+    
       </div>
     );
   }

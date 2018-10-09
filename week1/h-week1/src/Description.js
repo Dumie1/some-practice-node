@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import TodoList from './TodoList.js';
+import TodoList from './TodoList';
 
 class Description extends Component {
 
-    todoItem = TodoList.map((i, index) => (
+    todo = TodoList.map((todoItems, index) => (
         <li key={index}>
-            
-            {`${i.description} , ${i.deadLine}`}
+            {`${todoItems.description} , ${todoItems.deadLine}`}
         </li>
     ));
 
     render() {
         return (
-            <ul className='help'>
-                {this.todoItem}
+            <ul className='items'>
+                {this.todo}
             </ul>
         )
     }

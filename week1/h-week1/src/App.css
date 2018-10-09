@@ -32,10 +32,16 @@
 }
 
 /*Added this line of code below*/
-.help{
-  background: red;
-  margin:0px;
-  padding: 0px;
+.items{
+  background: #eeeeee;
+  list-style: none;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top:0px;
+  padding: 20px;
   
   
+}
+.items li{
+  padding: 10px;
 }
