@@ -34,7 +34,8 @@
 /*Added this line of code below*/
 
 .items{
-  background: #eeeeee;
+  /* background: #eeeeee; */
+  background-image: url('https://images.unsplash.com/photo-1538946456990-1fd23c29790a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1d4bdc19e1b028728f4d93113fbb2e4a&auto=format&fit=crop&w=750&q=80');
   list-style: none;
   margin-left: 200px;
   margin-right: 200px;
@@ -45,7 +46,7 @@
 .items li{
   padding: 20px;
   margin: 10px;
-  border: 2px dotted #cccccc;
+  border-radius: 5px;
   background:#9ec3ff;
 }
 
