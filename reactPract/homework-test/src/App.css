@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -38,12 +39,14 @@
 .items{
   background: #eeeeee;
   list-style: none;
-  margin-left: 100px;
-  margin-right: 100px;
-  margin-top:20px;
-  padding: 20px;
+  margin-left: 40px;
+  /* margin-right: 50px;  */
+  /* margin-top:20px; */
+  padding: 40px;
   border-radius: 10px;
-}
+  width: 60%;
+  display:flex;
+} 
 .items li{
   padding: 20px;
   margin: 10px;
@@ -52,13 +55,60 @@
   font-size: 20px;
   border-radius: 10px;
 } 
-ul:hover > li:not(:hover) {
+li:hover{
     opacity: 0.9;
+}
+ul{
+  width:720px;
 }
 .noItems{
   background: hsl(246, 100%, 71%);
   font-size: 20px;
-  border-radius: 30px;
+  border-radius: 20px;
   color: #ffff;
   padding: 20px;
+  width:100%;
+}
+.remove, .edit, .add{
+  background:red;
+  margin-left: 10px;
+  padding: 5px;
+  color:white;
+  border-radius:5px;
+  border:2px solid #1c4e5e;
+  width: 90px;
+  font-size: 15px;
+}
+.edit{
+  background:yellow;
+  color:black;
+}
+.add{
+  background: rgb(29, 204, 6);
+  color: rgb(3, 3, 3);
+}
+.add:hover {
+    transform: scale(1.1);
+    border:2px solid #e2dfdf;
+}
+form{
+  /* background: red; */
+  margin: 20px;
+  padding: 20px;
+  font-size: 20px;
+  color: rgb(5, 5, 53);
+  font-weight: bold;
+}
+input{
+  padding: 5px;
+  font-size: 15px;
+  /* text-align: center; */
+  border-radius: 4px;
+  margin-right: 20px;
+  margin-left: 5px;
+  border: 1px solid #ccc;
+  background: #eeeeee;
+}
+input:hover{
+  background: #ffff;
 }
