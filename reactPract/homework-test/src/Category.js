@@ -44,15 +44,7 @@ class Category extends React.Component {
     // }
 
 
-    // deleteTodo = (e, index) => {
-    //     const todos = this.state.todos;
-    //     todos = todos.filter(function (el) {
-    //         return el.id !== todos;
-    //     });
-    //     this.setState({ todos });
-    //     return;
     
-    // }
 
 
 
