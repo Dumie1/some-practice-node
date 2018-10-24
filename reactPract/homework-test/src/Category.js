@@ -10,6 +10,10 @@ class Category extends React.Component {
     }
 
 
+    handleChange = (e) => {
+        this.setState({ description: e.target.value });
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         const { todos } = this.state;
@@ -72,7 +76,7 @@ class Category extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Description :
-                    <input type="text" value={this.state.description}/>
+                    <input type="text" value={this.state.value} onChange={this.handleChange.bind(this)}/>
                     </label>
                     <label>
                         Deadline :
