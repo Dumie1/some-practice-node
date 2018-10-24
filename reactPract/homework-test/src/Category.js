@@ -1,6 +1,6 @@
 import React from 'react';
 import todos from './todos.json';
-import Form from './Form';
+// import Form from './Form';
 
 class Category extends React.Component {
 
@@ -9,23 +9,15 @@ class Category extends React.Component {
         todos
     }
 
- 
 
-
-
-
-
-
-
-
-    addTodo = e => {
+    handleSubmit = (e) => {
         e.preventDefault();
         const { todos } = this.state;
         //assemble data
         const newTodo = {
             id: todos.length + 1,
-            description: e.target.description.value,
-            deadline: e.target.deadline.value,
+            description: e.target.value,
+            deadline: e.target.value,
             done: false
         }
         //update state
@@ -33,20 +25,6 @@ class Category extends React.Component {
         //update state
         this.setState({ todos });
     }
-
-
-
-    // newTodoChanged = (e) => {
-    //     this.setState({
-    //         newTodo: e.target.value
-    //     });
-        
-    // }
-
-
-    
-
-
 
     deleteTodo = (e, i) => {
         const todos = this.state.todos;
@@ -89,7 +67,20 @@ class Category extends React.Component {
     render() {
         return (
             <div>
-                <Form/>
+                {/* <Form /> */}
+
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        Description :
+                    <input type="text" value={this.state.description}/>
+                    </label>
+                    <label>
+                        Deadline :
+                    <input type="date" value={this.state.deadline}/>
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
+
                 <div className='items'>
                     {this.renderTodos()}
                     
