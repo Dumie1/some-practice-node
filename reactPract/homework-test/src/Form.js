@@ -1,23 +1,29 @@
 import React from 'react';
 
 class Form extends React.Component{
-            
+           
+
     render() {
+
+        const { submitForm , newTodoChanged} = this.props; 
+
+
         return (
-            <form onSubmit={(e) => this.props.addTodo(e)}>
-                <label>
-                        Enter description :
-                     <input type='text' name='description' placeholder='Enter a description...' />
-                </label>
-                <label>
+            <form onSubmit={submitForm}>
+                    <label>
+                         Description :
+                <input onChange={newTodoChanged} type="text" name='description' placeholder='Type a description...' />
+                    </label>
+                    <label>
                         Deadline :
-                     <input type='date' name='name' />
-                </label>
-                <button type='submit' className='add'>Add</button>
-            </form> 
+                 <input onChange={newTodoChanged} type="date" name='deadline' />
+                    </label>
+                <input type="submit" value="Submit" />
+            </form>
 
                 )
             }
 }
 
 export default Form;
+ 
