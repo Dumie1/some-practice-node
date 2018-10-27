@@ -5,51 +5,84 @@ import Form from './Form';
 
 class Data extends React.Component {
 
-
     state = {
         Todos
     }
 
 
-    newTodoChanged =(e)=>{
-        console.log(e.target.value);
+    // newTodoChanged =(e)=>{
+    //     console.log(e.target.value);
         
         
+    // }
+
+    // submitForm = (e) => {
+    //     e.preventDefault();
+    //      const { todos } = this.state;
+    //     //assemble data
+    //     const newTodo = {
+    //         id: Todos.length + 1,
+    //         description: e.target.value,
+    //         deadline: e.target.value,
+    //         done: false
+    //     }
+    //     //add new todo to list
+    //     this.state.Todos.push(newTodo);
+    //     //update state
+    //     this.setState({ todos });  
+    // }
+
+
+    //-----refs below---
+
+    todoDescriptionInput = React.createRef();
+    todoDeadlineInput = React.createRef();
+
+    addTodo = (event) => {
+        event.preventDefault();
+
+        const todoDescriptionInput = this.todoDescriptionInput.current.value;
+        const todoDeadlineInput = this.todoDeadlineInput.current.value;
+
+        this.setState((prevState) => {
+            let todos = prevState.todos;
+
+            Todos.push({
+                id: Todos.length + 1,
+                description: todoDescriptionInput,
+                deadline: todoDeadlineInput,
+                done: false,
+            });
+            return { Todos: todos };
+            
+        });
+
+        this.todoDescriptionInput.current.value = '';
+        this.todoDeadlineInput.current.value = '';
+
     }
 
-    submitForm = (e) => {
-        e.preventDefault();
-         const { todos } = this.state;
-        //assemble data
-        const newTodo = {
-            id: Todos.length + 1,
-            description: e.target.value,
-            deadline: e.target.value,
-            done: false
-        }
-        //add new todo to list
-        this.state.Todos.push(newTodo);
-        //update state
-        this.setState({ todos });
-        
-    }
-
-
-    deleteTodo = ( index) => {
-        const todos = this.state.todos;
-        Todos.splice(index, 1);
-        this.setState({ todos });
-    }
     
-    isTaskDone (todo) {
+    // --------refs end--
+
+
+    deleteTodo = (id) => {
+        this.setState((prevState) => {
+            let todos = prevState.todos;
+            Todos.splice(id, 1);
+            return { Todos: todos };
+        });
+    }
+
+    isTaskDone = (todo) =>{
         todo.done = !todo.done;
         this.setState({
             todos: this.state.todos 
         });
     }
 
-    renderTodos (){
-        if (this.state.Todos.length === 0) return <p className='noItems'>No items...</p>
+    renderTodos = () => {
+        // if (this.state.Todos.length === 0) return <p className='noItems'>No items...</p>
 
         const textStyle = { textDecoration: 'line-through', backgroundColor: '#0455d8'}
 
@@ -63,7 +96,7 @@ class Data extends React.Component {
                                 {todo.description} , {todo.deadline}
                             </span>
                             <button onClick={this.editTodo} className='edit'>Edit</button>
-                            <button onClick={this.deleteTodo} className='remove'>Remove</button>
+                            <button onClick={(event)=>this.deleteTodo(id)} className='remove'>Remove</button>
 
                         </li>
                            
@@ -74,23 +107,214 @@ class Data extends React.Component {
     }
 
     render() {
+        
         return (
-            <div>
+            
+        <div>
                 <Form
-                    submitForm={this.submitForm}
-                    newTodoChanged={this.newTodoChanged}
+                    addTodo={this.addTodo}
+                    todoDescriptionInput={this.todoDescriptionInput}
+                    todoDeadlineInput={this.todoDeadlineInput}
                 />
-
-                
-
                 <div className='items'>
                     {this.renderTodos()}
                     
                 </div>
-                
-            </div>
+        </div> 
+            
         )
     }
 }
 
 export default Data;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// reall code below--
+
+
+// import React from 'react';
+// import Todos from './Todos.json';
+// // import Form from './Form';
+
+
+// class Data extends React.Component {
+
+//     //-----refs below---
+
+//     todoInput = React.createRef();
+//     todoInputDate = React.createRef()
+
+//     addTodo = (event) => {
+//         // if (event.key === 'Enter') {
+//         event.preventDefault();
+//         const todoInput = this.todoInput.current.value;
+//         const todoInputDate = this.todoInputDate.current.value;
+
+//         this.setState((prevState) => {
+//             let todos = prevState.todos;
+
+//             Todos.push({
+//                 id: 4,
+//                 description: todoInput,
+//                 deadline: todoInputDate,
+//                 done: false,
+//             });
+//             return {
+//                 Todos: todos
+//             }
+//         }
+//         )
+
+//     }
+
+//     // --------refs end--
+
+
+
+//     state = {
+//         Todos
+//     }
+
+
+//     // newTodoChanged =(e)=>{
+//     //     console.log(e.target.value);
+
+
+//     // }
+
+//     // submitForm = (e) => {
+//     //     e.preventDefault();
+//     //      const { todos } = this.state;
+//     //     //assemble data
+//     //     const newTodo = {
+//     //         id: Todos.length + 1,
+//     //         description: e.target.value,
+//     //         deadline: e.target.value,
+//     //         done: false
+//     //     }
+//     //     //add new todo to list
+//     //     this.state.Todos.push(newTodo);
+//     //     //update state
+//     //     this.setState({ todos });
+
+//     // }
+
+
+//     deleteTodo = (index) => {
+//         const todos = this.state.todos;
+//         Todos.splice(index, 1);
+//         this.setState({ todos });
+//     }
+
+//     isTaskDone(todo) {
+//         todo.done = !todo.done;
+//         this.setState({
+//             todos: this.state.todos
+//         });
+//     }
+
+//     renderTodos = () => {
+//         // if (this.state.Todos.length === 0) return <p className='noItems'>No items...</p>
+
+//         const textStyle = { textDecoration: 'line-through', backgroundColor: '#0455d8' }
+
+//         return <ul>
+//             {
+//                 Todos.map((todo, id) => {
+//                     return (
+//                         <li key={id}>
+//                             <input checked={todo.done} type='checkbox' onChange={this.isTaskDone.bind(this, todo)} />
+//                             <span style={todo.done ? textStyle : null}>
+//                                 {todo.description} , {todo.deadline}
+//                             </span>
+//                             <button onClick={this.editTodo} className='edit'>Edit</button>
+//                             <button onClick={this.deleteTodo} className='remove'>Remove</button>
+
+//                         </li>
+
+//                     )
+//                 })
+//             }
+//         </ul>
+//     }
+
+//     render() {
+
+//         return (
+
+//             <div>
+
+//                 <form onSubmit={this.addTodo}>
+//                     <label>
+//                         Description :
+//                 <input ref={this.todoInput} type="text" name='description' placeholder='Type a description...' />
+//                     </label>
+//                     <label>
+//                         Deadline :
+//                 <input ref={this.todoInputDate} type="date" name='description' />
+//                     </label>
+
+
+//                     <input type="submit" value="Submit" />
+//                 </form>
+
+
+
+//                 {/* <form >
+//                     <label>
+//                         Description :
+//                 <input type="text" name='description' placeholder='Type a description...'
+//                 ref={this.todoInput} onKeyUp={this.addTodo}    />
+//                 </label>
+//                 <label>
+//                     Deadline :
+//                 <input type="date" name='deadline'
+//                         ref={this.todoInputDate} onKeyUp={this.addTodo} />
+//                 </label>
+                    
+//                     <input type="submit" value="Submit" />
+            
+//                  <form/> */}
+
+
+
+//                 {/* <Form
+//                     submitForm={this.submitForm}
+//                     newTodoChanged={this.newTodoChanged}
+//                 /> */}
+
+
+
+//                 <div className='items'>
+//                     {this.renderTodos()}
+
+//                 </div>
+//             </div>
+
+//         )
+//     }
+// }
+
+// export default Data;
