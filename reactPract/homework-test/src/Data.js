@@ -2,7 +2,6 @@ import React from 'react';
 import Todos from './Todos.json';
 import Form from './Form';
 
-
 class Data extends React.Component {
 
     state = {
@@ -10,60 +9,31 @@ class Data extends React.Component {
     }
 
 
-    // newTodoChanged =(e)=>{
-    //     console.log(e.target.value);
-        
-        
-    // }
+    descriptionInput = React.createRef();
+    deadlineInput = React.createRef();
 
-    // submitForm = (e) => {
-    //     e.preventDefault();
-    //      const { todos } = this.state;
-    //     //assemble data
-    //     const newTodo = {
-    //         id: Todos.length + 1,
-    //         description: e.target.value,
-    //         deadline: e.target.value,
-    //         done: false
-    //     }
-    //     //add new todo to list
-    //     this.state.Todos.push(newTodo);
-    //     //update state
-    //     this.setState({ todos });  
-    // }
-
-
-    //-----refs below---
-
-    todoDescriptionInput = React.createRef();
-    todoDeadlineInput = React.createRef();
 
     addTodo = (event) => {
         event.preventDefault();
-
-        const todoDescriptionInput = this.todoDescriptionInput.current.value;
-        const todoDeadlineInput = this.todoDeadlineInput.current.value;
+        
+        const descriptionInput = this.descriptionInput.current.value;
+        const deadlineInput = this.deadlineInput.current.value;
 
         this.setState((prevState) => {
             let todos = prevState.todos;
 
             Todos.push({
                 id: Todos.length + 1,
-                description: todoDescriptionInput,
-                deadline: todoDeadlineInput,
+                description: descriptionInput,
+                deadline: deadlineInput,
                 done: false,
             });
             return { Todos: todos };
-            
         });
 
-        this.todoDescriptionInput.current.value = '';
-        this.todoDeadlineInput.current.value = '';
-
+        this.descriptionInput.current.value = '';
+        this.deadlineInput.current.value = '';
     }
-
-    
-    // --------refs end--
 
 
     deleteTodo = (id) => {
@@ -74,12 +44,14 @@ class Data extends React.Component {
         });
     }
 
+
     isTaskDone = (todo) =>{
         todo.done = !todo.done;
         this.setState({
             todos: this.state.todos 
         });
     }
+
 
     renderTodos = () => {
         // if (this.state.Todos.length === 0) return <p className='noItems'>No items...</p>
@@ -97,7 +69,6 @@ class Data extends React.Component {
                             </span>
                             <button onClick={this.editTodo} className='edit'>Edit</button>
                             <button onClick={(event)=>this.deleteTodo(id)} className='remove'>Remove</button>
-
                         </li>
                            
                     )
@@ -110,18 +81,17 @@ class Data extends React.Component {
         
         return (
             
-        <div>
+             <div>
                 <Form
                     addTodo={this.addTodo}
-                    todoDescriptionInput={this.todoDescriptionInput}
-                    todoDeadlineInput={this.todoDeadlineInput}
+                    descriptionInput={this.descriptionInput}
+                    deadlineInput={this.deadlineInput}
                 />
                 <div className='items'>
                     {this.renderTodos()}
                     
                 </div>
-        </div> 
-            
+             </div> 
         )
     }
 }

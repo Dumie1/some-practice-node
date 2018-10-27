@@ -1,22 +1,19 @@
 import React from 'react';
 
 class Form extends React.Component{
-           
-
     render() {
 
-        const { addTodo , todoDescriptionInput , todoDeadlineInput} = this.props; 
-
+        const { addTodo , descriptionInput , deadlineInput} = this.props; 
 
         return (
             <form onSubmit={addTodo}>
                 <label>
                     Description :
-                    <input ref={todoDescriptionInput} type='text' name='description' placeholder='Type a description...' />
+                    <input ref={descriptionInput} type='text' name='description' placeholder='Type a description...' />
                 </label>
                 <label>
                     Deadline :
-                    <input ref={todoDeadlineInput} type='date' name='description' />
+                    <input ref={deadlineInput} type='date' name='description' />
                 </label>
                     <input type='submit' value='Submit'/>
             </form>
