@@ -15,7 +15,7 @@ class Form extends React.Component{
                     Deadline :
                     <input ref={deadlineInput} type='date' name='description' />
                 </label>
-                    <input type='submit' value='Submit'/>
+                    <input type='submit' value='Submit' className='add'/>
             </form>
 
                 )

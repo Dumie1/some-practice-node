@@ -55,7 +55,7 @@ class Data extends React.Component {
   renderTodos = () => {
     if (this.state.Todos.length === 0)
       return <p className="noItems">No items...</p>;
-    console.log(this.state);
+    // console.log(this.state);
     const textStyle = {
       textDecoration: "line-through",
       backgroundColor: "#0455d8"
