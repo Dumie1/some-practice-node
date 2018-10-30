@@ -2,9 +2,13 @@
 .App {
   text-align: center;
 }
-
+.data{
+  width: 70%;
+  float: left;
+}
 .App-header {
-  background-color: #031e53;
+  /* background-color: #031e53; */
+  background: #062049;
   min-height: 3vh;
   display: flex;
   flex-direction: column;
@@ -40,11 +44,9 @@
   background: #eeeeee;
   list-style: none;
   margin-left: 40px;
-  /* margin-right: 50px;  */
-  /* margin-top:20px; */
+  margin-right: 40px; 
   padding: 40px;
   border-radius: 10px;
-  width: 60%;
   display:flex;
 } 
 .items li{
@@ -54,12 +56,14 @@
   color: #ffff;
   font-size: 20px;
   border-radius: 10px;
+  
 } 
 li:hover{
     opacity: 0.9;
 }
 ul{
-  width:720px;
+  width:90%;
+  
 }
 .noItems{
   background: hsl(246, 100%, 71%);
@@ -92,17 +96,15 @@ ul{
     border:2px solid #e2dfdf;
 }
 form{
-  /* background: red; */
   margin: 20px;
   padding: 20px;
-  font-size: 20px;
+  font-size: 25px;
   color: rgb(5, 5, 53);
   font-weight: bold;
 }
 input{
   padding: 5px;
   font-size: 15px;
-  /* text-align: center; */
   border-radius: 4px;
   margin-right: 20px;
   margin-left: 5px;
@@ -112,3 +114,18 @@ input{
 input:hover{
   background: #ffff;
 }
+.calender{
+  width:25%;
+  float: right;
+  padding:10px;
+  height:300px;
+  border-radius: 10px;
+  margin-top: 115px;
+  margin-right:40px;
+  background: #062049;
+  color: white;
+  font-size: 25px;
+}
+
+/* ------- */
+
