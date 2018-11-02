@@ -7,7 +7,6 @@
   float: left;
 }
 .App-header {
-  /* background-color: #031e53; */
   background: #062049;
   min-height: 3vh;
   display: flex;
@@ -21,16 +20,6 @@
 .App-link {
   color: #61dafb;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 /* My extra code below */
 
 .designLogo{

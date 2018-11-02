@@ -48,7 +48,6 @@ class Data extends React.Component {
   renderTodos = () => {
     if (this.state.Todos.length === 0)
       return <p className='noItems'>No items...</p>;
-    // console.log(this.state);
     const textStyle = {
       textDecoration: 'line-through',
       backgroundColor: '#0455d8'
@@ -62,14 +61,11 @@ class Data extends React.Component {
               <input
                 checked={todo.done}
                 type='checkbox'
-                onChange={this.isTaskDone.bind(this, todo)}
+                onChange={()=>this.isTaskDone(todo)}
               />
               <span style={todo.done ? textStyle : null}>
                 {todo.description} , {todo.deadline}
               </span>
-              {/* <button onClick={this.edit} className='edit'>
-                Edit
-              </button> */}
               <button onClick={event => this.deleteTodo(id)} className='remove'>
                 Remove
               </button>
