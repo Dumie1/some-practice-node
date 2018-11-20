@@ -69,3 +69,4 @@ class BooksStore {
 
 const store = new BooksStore();
 export default store;
+
